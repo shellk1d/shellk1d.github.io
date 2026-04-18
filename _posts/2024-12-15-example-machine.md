@@ -20,7 +20,7 @@ Empezamos con un escaneo de puertos para identificar los servicios expuestos:
 nmap -sC -sV -oA scans/initial 10.10.11.x
 ```
 
-El resultado muestra los puertos 22 (SSH) y 8080 (HTTP) abiertos.
+El resultado muestra los puertos 22 (SSH) y 8080 (HTTP) abierto.
 
 ## Enumeración web
 
