@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Red Team operator | Pentester | Security researcher">
+  <title>Shellk1d — Red Team</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 0 4rem;
+      position: relative;
+    }
+
+    .hero-handle {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-weight: 900;
+      color: var(--green-bright);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-role {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .hero-description {
+      max-width: 520px;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.9;
+      margin-bottom: 2.5rem;
+    }
+
+    .boot-terminal {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-left: 3px solid var(--green-bright);
+      padding: 1.25rem 1.5rem;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      max-height: 220px;
+      overflow-y: auto;
+      min-height: 220px;
+    }
+
+    .boot-line {
+      margin-bottom: 0.15rem;
+    }
+
+    #matrix-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.04;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .stat-card:hover {
+      border-color: var(--green-dim);
+      box-shadow: 0 0 20px var(--green-glow);
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .writeup-table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .writeup-table th {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.5rem 0.75rem;
+      font-family: var(--font-display);
+    }
+
+    .writeup-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.82rem;
+      vertical-align: middle;
+    }
+
+    .writeup-table tr:hover td {
+      background: var(--bg-card-hover);
+    }
+
+    .writeup-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Skills grid */
+    .skill-item {
+      padding: 0.4rem 0;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-item::before {
+      content: '▸';
+      color: var(--green-bright);
+      font-size: 0.7rem;
+    }
+
+    .skill-item:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="matrix-canvas"></canvas>
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand glitch-text" href="index.html">
+        <span style="color:var(--text-muted)">~/</span>root<span style="color:var(--green-bright)">@</span>shellk1d
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-1">
+          <li class="nav-item"><a class="nav-link active" href="index.html">~/home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">~/about</a></li>
+          <li class="nav-item"><a class="nav-link" href="writeups/index.html">~/writeups</a></li>
+          <li class="nav-item"><a class="nav-link" href="tools.html">~/tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="research.html">~/research</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="row align-items-center g-5">
+
+        <div class="col-lg-6">
+          <p class="section-title fade-in-up stagger-1">
+            <i class="bi bi-terminal me-2"></i>Red Team Operator
+          </p>
+          <h1 class="hero-handle fade-in-up stagger-2 cursor-blink glitch-text">SHELLK1D</h1>
+          <p class="hero-role fade-in-up stagger-3">Técnico en Sistemas (ASIR) · Pentesting · Red Team</p>
+          <p class="hero-description fade-in-up stagger-4">
+            Pentester en formación. Comparto todo lo que aprendo: desde write-ups hasta
+            herramientas de mi propia autoría.
+          </p>
+          <div class="d-flex flex-wrap gap-3 fade-in-up stagger-5">
+            <a href="writeups/index.html" class="btn-terminal">
+              <span><i class="bi bi-file-earmark-code me-2"></i>Write-ups</span>
+            </a>
+            <a href="about.html" class="btn-terminal">
+              <span><i class="bi bi-person me-2"></i>Sobre mí</span>
+            </a>
+          </div>
+
+          <div class="d-flex gap-3 mt-4 fade-in-up stagger-6" style="font-size:0.78rem; color:var(--text-muted);">
+            <a href="https://github.com/YOURUSERNAME" target="_blank" class="d-flex align-items-center gap-1"
+              style="color:var(--text-muted);">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+
+            <a href="https://hackthebox.com/profile/YOURID" target="_blank" class="d-flex align-items-center gap-1"
+              style="color:var(--text-muted);">
+              <i class="bi bi-box"></i> HackTheBox
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-6 fade-in-up stagger-3">
+          <div class="boot-terminal" id="boot-output">
+            <div style="color:var(--text-muted); font-size:0.7rem; margin-bottom:0.75rem;">
+              Linux 6.1.0-Arch #1 SMP PREEMPT_DYNAMIC — tty0
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-5">
+    <div class="container">
+      <div class="row g-0">
+        <div class="col-6 col-md-3">
+          <div class="stat-card">
+            <div class="stat-number" data-count="0">0</div>
+            <div class="stat-label">Máquinas</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-card">
+            <div class="stat-number" data-count="0">0</div>
+            <div class="stat-label">Write-ups</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-card">
+            <div class="stat-number" data-count="0">0</div>
+            <div class="stat-label">Herramientas</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-card">
+            <div class="stat-number" data-count="0">0</div>
+            <div class="stat-label">CVEs / Research</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-7 stagger-1">
+          <p class="section-title"><i class="bi bi-file-text me-2"></i>Últimas entradas</p>
+          <h2 class="section-heading">Write-ups</h2>
+
+          <table class="writeup-table">
+            <thead>
+              <tr>
+                <th>Máquina / Objetivo</th>
+                <th>Plataforma</th>
+                <th>Dificultad</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td><a href="writeups/_template.html">Example Machine</a></td>
+                <td><span class="tag">HackTheBox</span></td>
+                <td><span class="severity-high">Hard</span></td>
+                <td style="color:var(--text-muted)">26-06-2026</td>
+              </tr>
+
+            </tbody>
+          </table>
+
+          <div class="mt-3">
+            <a href="writeups/index.html" class="btn-outline-terminal btn btn-sm">
+              Ver todos los write-ups <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-5 stagger-2">
+          <p class="section-title"><i class="bi bi-cpu me-2"></i>Especialidades</p>
+          <h2 class="section-heading">Arsenal</h2>
+
+          <div class="row g-4">
+            <div class="col-6">
+              <p
+                style="font-size:0.7rem; color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.5rem;">
+                Ofensivo</p>
+              <div class="skill-item">Active Directory</div>
+              <div class="skill-item">Web App Pentesting</div>
+              <div class="skill-item">Buffer Overflow</div>
+              <div class="skill-item">Pivoting / Tunneling</div>
+              <div class="skill-item">Reconnaissance</div>
+              <div class="skill-item">Scripting / Automation</div>
+            </div>
+            <div class="col-6">
+              <p
+                style="font-size:0.7rem; color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.5rem;">
+                Herramientas</p>
+              <div class="skill-item">BloodHound / Impacket</div>
+              <div class="skill-item">Burp Suite / Fuff</div>
+              <div class="skill-item">Ghidra / Pwntools</div>
+              <div class="skill-item">Ligolo / RPivot</div>
+              <div class="skill-item">Nmap / Masscan</div>
+              <div class="skill-item">Python / Bash</div>
+            </div>
+          </div>
+
+          <!-- <div class="mt-4">
+            <p
+              style="font-size:0.7rem; color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.75rem;">
+              Certificaciones</p>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge badge-terminal">OSCP</span>
+              <span class="badge badge-terminal">CEH</span>
+              <span class="badge badge-terminal">eJPT</span>
+              <span class="badge badge-warning-terminal">CRTO</span>
+              <span class="badge badge-terminal">HTB Pro Hacker</span>
+            </div>
+          </div> -->
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <span class="prompt">whoami</span><br>
+          <span style="color:var(--text-muted)">Shellk1d — Pentester</span>
+        </div>
+        <div class="col-md-6 text-md-end mt-3 mt-md-0">
+          <span style="color:var(--text-muted)">
+            Built with <span style="color:var(--green-bright)">♥</span> and no sleep ·
+            <a href="https://github.com/shellk1d/shellk1d.github.io" target="_blank">Source</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="assets/js/terminal.js"></script>
+
+  <script>
+
+    const bootLines = [
+      { text: 'Initializing kernel modules...', type: 'ok', delay: 60 },
+      { text: 'Loading network interfaces', type: 'ok', delay: 80 },
+      { text: 'Mounting encrypted volumes', type: 'ok', delay: 100 },
+      { text: 'Starting VPN daemon', type: 'ok', delay: 70 },
+      { text: 'Checking OPSEC rules', type: 'ok', delay: 90 },
+      { text: 'Telemetry agent', type: 'fail', delay: 60 },
+      { text: 'Loading recon modules', type: 'ok', delay: 80 },
+      { text: 'Starting exploit framework', type: 'ok', delay: 100 },
+      { text: 'C2 beacon established', type: 'warn', delay: 120 },
+      { text: 'whoami', type: 'cmd', delay: 200 },
+      { text: 'shellk1d', type: 'comment', delay: 80 },
+      { text: 'cat /etc/passwd | grep root', type: 'cmd', delay: 150 },
+      { text: 'root:x:0:0:root:/root:/bin/zsh', type: 'comment', delay: 80 },
+      { text: 'System ready.', type: 'ok', delay: 200 },
+    ];
+
+    new BootSequence('boot-output', bootLines).run();
+
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
+    const chars = '01アイウエオカキクケコサシスセソタチツテト∀∃∈∉⊂⊃';
+    let drops = [];
+
+    function resizeMatrix() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const cols = Math.floor(canvas.width / 14);
+      drops = Array.from({ length: cols }, () => Math.random() * canvas.height / 14);
+    }
+
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(3,11,3,0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00ff41';
+      ctx.font = '12px "Fira Code", monospace';
+
+      drops.forEach((y, i) => {
+        const char = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(char, i * 14, y * 14);
+        if (y * 14 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i] += 0.5;
+      });
+    }
+
+    resizeMatrix();
+    window.addEventListener('resize', resizeMatrix);
+    setInterval(drawMatrix, 50);
+  </script>
+
+</body>
+
+</html>

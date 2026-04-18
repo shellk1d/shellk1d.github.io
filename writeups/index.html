@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Write-ups — shellk1d</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .page-header {
+      padding: 5rem 0 3rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 4rem;
+    }
+
+    .writeup-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 1.5rem;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .writeup-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--green-bright);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.3s;
+    }
+
+    .writeup-card:hover {
+      border-color: var(--green-dim);
+      box-shadow: 0 0 25px var(--green-glow);
+      transform: translateY(-2px);
+    }
+
+    .writeup-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .writeup-title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      color: var(--green-bright);
+      margin-bottom: 0.5rem;
+      transition: text-shadow 0.2s;
+    }
+
+    .writeup-card:hover .writeup-title {
+      text-shadow: 0 0 15px var(--green-glow-str);
+    }
+
+    .writeup-meta {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .writeup-excerpt {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Filter pills */
+    .filter-pill {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.25rem 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.05em;
+    }
+
+    .filter-pill:hover,
+    .filter-pill.active {
+      border-color: var(--green-bright);
+      color: var(--green-bright);
+      box-shadow: 0 0 10px var(--green-glow);
+    }
+
+    .search-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      padding: 0.5rem 1rem;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-box:focus {
+      border-color: var(--green-dim);
+    }
+
+    .search-box::placeholder {
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand glitch-text" href="../index.html">
+        <span style="color:var(--text-muted)">~/</span>root<span style="color:var(--green-bright)">@</span>shellk1d
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="../index.html">~/home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../about.html">~/about</a></li>
+          <li class="nav-item"><a class="nav-link active" href="index.html">~/writeups</a></li>
+          <li class="nav-item"><a class="nav-link" href="../tools.html">~/tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="../research.html">~/research</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <p class="section-title"><i class="bi bi-file-earmark-code me-2"></i>Documenting the hack</p>
+      <h1 style="font-family:var(--font-display); font-size:clamp(1.8rem,5vw,3rem); color:var(--green-bright);">
+        Write-ups
+      </h1>
+      <p style="color:var(--text-secondary); font-size:0.85rem; max-width:500px; margin-top:0.5rem;">
+        Documentación de máquinas resueltas, CTFs y técnicas. Cada write-up incluye el proceso completo,
+        no solo el resultado.
+      </p>
+    </div>
+  </div>
+
+  <div class="container pb-5">
+
+    <div class="row align-items-center mb-4 g-3">
+      <div class="col-md-6">
+        <div class="d-flex flex-wrap gap-2">
+          <button class="filter-pill active" data-filter="all">Todos</button>
+          <button class="filter-pill" data-filter="htb">HackTheBox</button>
+          <button class="filter-pill" data-filter="thm">TryHackMe</button>
+          <button class="filter-pill" data-filter="ctf">CTF</button>
+          <button class="filter-pill" data-filter="ad">Active Directory</button>
+        </div>
+      </div>
+      <div class="col-md-4 ms-md-auto">
+        <input type="text" class="search-box" id="searchInput" placeholder="$ grep -r 'keyword' ./writeups/">
+      </div>
+    </div>
+
+    <div class="row g-4" id="writeups-grid">
+
+      <div class="col-md-6 col-lg-4 writeup-item" data-tags="htb hard">
+        <a href="_template.html" style="text-decoration:none;">
+          <div class="writeup-card h-100">
+            <div class="writeup-meta">
+              <span class="tag">HackTheBox</span>
+              <span class="ms-2 severity-high">Hard</span>
+              <span class="ms-2"><i class="bi bi-calendar3 me-1"></i>2024-12-15</span>
+            </div>
+            <div class="writeup-title">Example Machine</div>
+            <div class="writeup-excerpt">
+              Explotación de XXE para leer archivos internos, escalada mediante SUID mal configurado
+              y pivoting a red interna con chisel.
+            </div>
+            <div class="mt-3">
+              <span class="tag">xxe</span>
+              <span class="tag">suid</span>
+              <span class="tag">pivoting</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-lg-4 writeup-item" data-tags="ctf insane">
+        <a href="example-machine.html" style="text-decoration:none;">
+          <div class="writeup-card h-100">
+            <div class="writeup-meta">
+              <span class="tag">CTF</span>
+              <span class="ms-2 severity-critical">Insane</span>
+              <span class="ms-2"><i class="bi bi-calendar3 me-1"></i>2024-11-20</span>
+            </div>
+            <div class="writeup-title">CTF Challenge — Binary Exploitation</div>
+            <div class="writeup-excerpt">
+              Buffer overflow en binario 64-bit, bypass de ASLR con ret2libc y shell inversa
+              desde entorno CTF controlado.
+            </div>
+            <div class="mt-3">
+              <span class="tag">bof</span>
+              <span class="tag">ret2libc</span>
+              <span class="tag">pwn</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-lg-4 writeup-item" data-tags="htb ad medium">
+        <a href="example-machine.html" style="text-decoration:none;">
+          <div class="writeup-card h-100">
+            <div class="writeup-meta">
+              <span class="tag">HackTheBox</span>
+              <span class="ms-2 severity-medium">Medium</span>
+              <span class="ms-2"><i class="bi bi-calendar3 me-1"></i>2024-11-05</span>
+            </div>
+            <div class="writeup-title">AD Machine — Kerberoasting</div>
+            <div class="writeup-excerpt">
+              Enumeración de AD con BloodHound, Kerberoasting de cuenta de servicio,
+              pass-the-hash para acceso de administrador de dominio.
+            </div>
+            <div class="mt-3">
+              <span class="tag">kerberoast</span>
+              <span class="tag">bloodhound</span>
+              <span class="tag">pth</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- <div class="col-md-6 col-lg-4 writeup-item" data-tags="thm medium">
+        <a href="example-machine.html" style="text-decoration:none;">
+          <div class="writeup-card h-100">
+            <div class="writeup-meta">
+              <span class="tag">TryHackMe</span>
+              <span class="ms-2 severity-medium">Medium</span>
+              <span class="ms-2"><i class="bi bi-calendar3 me-1"></i>2024-10-18</span>
+            </div>
+            <div class="writeup-title">Web App — SSRF to RCE</div>
+            <div class="writeup-excerpt">
+              SSRF para acceder a metadata de instancia cloud, obtención de credenciales temporales
+              y escalada a ejecución remota de código.
+            </div>
+            <div class="mt-3">
+              <span class="tag">ssrf</span>
+              <span class="tag">cloud</span>
+              <span class="tag">rce</span>
+            </div>
+          </div>
+        </a>
+      </div> -->
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <span class="prompt">ls -la ./writeups/</span><br>
+          <span style="color:var(--text-muted)">total 3 write-ups publicados</span>
+        </div>
+        <div class="col-md-6 text-md-end mt-3 mt-md-0" style="color:var(--text-muted);">
+          <a href="../index.html" style="color:var(--text-muted)"><i class="bi bi-arrow-left me-1"></i>Volver al
+            inicio</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/terminal.js"></script>
+  <script>
+
+    document.querySelectorAll('.filter-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        const filter = pill.dataset.filter;
+        document.querySelectorAll('.writeup-item').forEach(item => {
+          item.style.display = (filter === 'all' || item.dataset.tags.includes(filter)) ? '' : 'none';
+        });
+      });
+    });
+
+    document.getElementById('searchInput').addEventListener('input', function () {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.writeup-item').forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+
+</html>

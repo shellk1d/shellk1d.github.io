@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — shellk1d</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .page-header {
+      padding: 5rem 0 3rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 4rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      padding-bottom: 2rem;
+      border-left: 1px solid var(--border-color);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 4px;
+      width: 7px;
+      height: 7px;
+      background: var(--green-bright);
+      box-shadow: 0 0 10px var(--green-glow-str);
+    }
+
+    .timeline-item:last-child {
+      border-left-color: transparent;
+    }
+
+    .timeline-date {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-role {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      color: var(--green-bright);
+      margin-bottom: 0.1rem;
+    }
+
+    .timeline-company {
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-desc {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      line-height: 1.7;
+    }
+
+    .cert-badge {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      transition: all 0.25s;
+      text-align: center;
+      cursor: default;
+    }
+
+    .cert-badge:hover {
+      border-color: var(--green-dim);
+      box-shadow: 0 0 20px var(--green-glow);
+    }
+
+    .cert-badge .cert-name {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      color: var(--green-bright);
+    }
+
+    .cert-badge .cert-org {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.2rem;
+    }
+
+    .skill-bar-wrap {
+      margin-bottom: 1rem;
+    }
+
+    .skill-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.3rem;
+    }
+
+    .skill-bar-bg {
+      height: 3px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      position: relative;
+    }
+
+    .skill-bar-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      background: var(--green-bright);
+      box-shadow: 0 0 8px var(--green-glow-str);
+      width: 0;
+      transition: width 1.2s ease;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand glitch-text" href="index.html">
+        <span style="color:var(--text-muted)">~/</span>root<span style="color:var(--green-bright)">@</span>shellk1d
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">~/home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">~/about</a></li>
+          <li class="nav-item"><a class="nav-link" href="writeups/index.html">~/writeups</a></li>
+          <li class="nav-item"><a class="nav-link" href="tools.html">~/tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="research.html">~/research</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="container">
+      <p class="section-title"><i class="bi bi-person-badge me-2"></i>Identity file</p>
+      <h1 class="hero-handle"
+        style="font-family:var(--font-display); font-size:clamp(1.8rem,5vw,3.5rem); color:var(--green-bright);">
+        Esteban Ordóñez Bravo
+      </h1>
+      <p style="color:var(--text-secondary); font-size:0.88rem; margin-top:0.5rem;">
+        aka <span style="color:var(--green-bright)">Shellk1d</span> ·
+        Técnico en Sistemas (ASIR) · Pentesting · Red Team
+      </p>
+      <div class="d-flex gap-3 mt-3" style="font-size:0.78rem; color:var(--text-muted);">
+        <span><i class="bi bi-geo-alt me-1"></i>España</span>
+        <span><i class="bi bi-envelope me-1"></i>media-account-ca@proton.me</span>
+        <!-- <a href="assets/cv.pdf" class="btn-terminal btn btn-sm" style="font-size:0.7rem; padding:0.2rem 0.8rem;">
+          <span><i class="bi bi-download me-1"></i>CV PDF</span>
+        </a> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="container pb-5">
+    <div class="row g-5">
+
+      <div class="col-lg-7">
+
+        <p class="section-title"><i class="bi bi-terminal me-2"></i>cat about.txt</p>
+        <h2 class="section-heading">Bio</h2>
+        <p style="color:var(--text-secondary); font-size:0.88rem; line-height:1.9;">
+          Técnico en Sistemas (ASIR) · Pentesting · Red Team
+        </p>
+        <p style="color:var(--text-secondary); font-size:0.88rem; line-height:1.9;">
+          Mi trayectoria en la informática no empezó con un libro, sino con un incidente: a los 10 años, un troyano
+          infectó mi portátil. Aquello no fue una simple anécdota, fue el punto de inflexión que definió mi carrera y mi
+          mentalidad. Desde entonces, el Hacking Ético ha sido el eje central de mi aprendizaje y mi día a día.
+        </p>
+
+        <p style="color:var(--text-secondary); font-size:0.88rem; line-height:1.9;">
+          He construido mi base técnica mediante formación oficial en Administración de Sistemas y Redes (SMR y ASIR),
+          lo que me permite dominar la infraestructura desde dentro. Sin embargo, mi verdadera especialización es la
+          seguridad ofensiva, un campo que he cultivado de forma intensiva y autodidacta durante años en comunidades
+          de hacking y plataformas de alto rendimiento.
+        </p>
+
+        <p style="color:var(--text-secondary); font-size:0.88rem; line-height:1.9;">
+          Dedico gran parte de mi tiempo a la resolución de CTFs en las plataformas de Hack The Box, TryHackMe, VulnHub
+          y a la formación continua, principalmente en Hack4u y Hack The Box Academy.
+        </p>
+
+        <p style="color:var(--text-secondary); font-size:0.88rem; line-height:1.9;">
+          Mi principal objetivo en estos momentos es continuar con mi formación académica, ya que aspiro a conseguir las
+          certificaciones OSCP y OSWE. Sin embargo, no cierro las puertas a un empleo que me permita adquirir
+          experiencia en el sector y al mismo tiempo continuar con mi formación.
+        </p>
+
+        <br>
+
+        <p class="section-title"><i class="bi bi-clock-history me-2"></i>Trayectoria</p>
+        <h2 class="section-heading">Experiencia</h2>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2026 — Presente</div>
+          <div class="timeline-role">Cloud Infrastructure Intern</div>
+          <div class="timeline-company">Capgemini · Híbrido · Madrid</div>
+          <div class="timeline-desc">
+            Despliegue de infraestructura en Azure mediante Terraform y Azure DevOps. Configuración de
+            Centreon, Grafana, Prometheus y Zammad para monitorización. Desarrollo de aplicaciones web y bases de
+            datos MySQL.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2024</div>
+          <div class="timeline-role">Becario</div>
+          <div class="timeline-company">SIC Sistemas · Presencial · Guadalajara</div>
+          <div class="timeline-desc">
+            Gestión y resolución de incidencias en entornos de Active Directory y estaciones de trabajo,
+            configuración de equipos y tareas de soporte técnico general.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-5">
+
+        <p class="section-title"><i class="bi bi-award me-2"></i>Credenciales</p>
+        <h2 class="section-heading">Futuras certificaciones</h2>
+
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <div class="cert-badge">
+            <div class="cert-name">OSCP</div>
+            <div class="cert-org">Offensive Security</div>
+          </div>
+          <div class="cert-badge">
+            <div class="cert-name">eWPTXv2</div>
+            <div class="cert-org">INE</div>
+          </div>
+          <div class="cert-badge">
+            <div class="cert-name">PNPT</div>
+            <div class="cert-org">TCM Security</div>
+          </div>
+        </div>
+
+        <hr class="section-divider my-4" data-label="// skills">
+
+        <p class="section-title"><i class="bi bi-bar-chart me-2"></i>Niveles</p>
+        <h2 class="section-heading">Habilidades</h2>
+
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Active Directory / AD Attacks</span><span>65%</span></div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill" data-width="65"></div>
+          </div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Web Pentesting</span><span>70%</span></div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill" data-width="70"></div>
+          </div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Scripting (Python / Bash)</span><span>50%</span></div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill" data-width="50"></div>
+          </div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>C2 / Payload Development</span><span>25%</span></div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill" data-width="25"></div>
+          </div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Cloud (AWS / Azure)</span><span>70%</span></div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill" data-width="70"></div>
+          </div>
+        </div>
+        <div class="skill-bar-wrap">
+          <div class="skill-bar-label"><span>Reverse Engineering</span><span>40%</span></div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill" data-width="40"></div>
+          </div>
+        </div>
+
+        <hr class="section-divider my-4" data-label="// plataformas">
+
+        <p class="section-title"><i class="bi bi-trophy me-2"></i>Plataformas</p>
+        <div class="row g-2">
+          <div class="col-6">
+            <div class="card p-3">
+              <div style="font-size:0.65rem; color:var(--text-muted); letter-spacing:0.1em;">HACKTHEBOX</div>
+              <div
+                style="color:var(--green-bright); font-family:var(--font-display); font-size:1rem; margin-top:0.25rem;">
+                Script Kiddie</div>
+              <div style="font-size:0.72rem; color:var(--text-muted);">0 máquinas</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card p-3">
+              <div style="font-size:0.65rem; color:var(--text-muted); letter-spacing:0.1em;">TRYHACKME</div>
+              <div
+                style="color:var(--green-bright); font-family:var(--font-display); font-size:1rem; margin-top:0.25rem;">
+                No score</div>
+              <div style="font-size:0.72rem; color:var(--text-muted);">0 salas completadas</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <span class="prompt">whoami</span><br>
+          <span style="color:var(--text-muted)">Shellk1d — Pentester</span>
+        </div>
+        <div class="col-md-6 text-md-end mt-3 mt-md-0">
+          <a href="https://github.com/YOURUSERNAME" style="color:var(--text-muted)">
+            <i class="bi bi-github me-1"></i>GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/terminal.js"></script>
+  <script>
+
+    const bars = document.querySelectorAll('.skill-bar-fill');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.width = e.target.dataset.width + '%';
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    bars.forEach(b => observer.observe(b));
+
+  </script>
+</body>
+
+</html>
