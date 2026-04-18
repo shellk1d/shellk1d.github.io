@@ -17,7 +17,7 @@ tags:
 Empezamos con un escaneo de puertos para identificar los servicios expuestos:
 
 ```bash
-nmap -sC -sV -oA scans/initial 10.10.11.x
+nmap -sC -sV -oA scans/initial 10.10.11.30
 ```
 
 El resultado muestra los puertos 22 (SSH) y 8080 (HTTP) abierto.
