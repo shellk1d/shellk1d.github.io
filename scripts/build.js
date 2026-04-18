@@ -68,6 +68,10 @@ const files = fs.readdirSync(POSTS_DIR)
   .filter(f => f.endsWith('.md'))
   .sort()
   .reverse(); // más recientes primero
+console.log("-----------------------------------------");
+console.log(`📂 Directorio de posts: ${POSTS_DIR}`);
+console.log(`📄 Archivos encontrados: ${files.join(', ')}`);
+console.log("-----------------------------------------");
 
 if (files.length === 0) {
   console.log('ℹ️   No hay archivos .md en _posts/. Añade write-ups y vuelve a ejecutar.');
